@@ -1,0 +1,56 @@
+{% extends 'dashboard/base.html' %}
+{% block page_content %}
+    <div id="support-app">
+        <div class="fdc row custom_row">
+            <div class="step-2 support-form">
+                <div class="form">
+                    <div class="support-input-margin row custom_row" style="width: 100%">
+                        <div class="col-sm-6 col-lg-5 custom_col">
+                            <div class="amount-input">
+                                <input v-if="invalid_support_name != ''" v-model="support_name" v-bind:class="[is_dark_mode ? 'dark-input error_border' : 'white-input error_border']" :placeholder="invalid_support_name" />
+                                <input v-else v-model="support_name" v-bind:class="[is_dark_mode ? 'dark-input' : 'white-input']" placeholder="Enter your name" />
+                            </div>
+                        </div>
+                        <div class="d-block d-sm-none col-12" style="height: 20px;"></div>
+                        <div class="col-sm-6 col-lg-7 custom_col">
+                            <input v-if="invalid_support_email != ''" v-model="support_name" v-bind:class="[is_dark_mode ? 'dark-input error_border' : 'white-input error_border']" :placeholder="invalid_support_email" />
+                            <input v-else v-model="support_email" v-bind:class="[is_dark_mode ? 'dark-input' : 'white-input']" placeholder="Enter your email address" />
+                        </div>
+                    </div>
+                    <div class="support-input-margin">
+                        <input v-model="support_deposit_address" v-bind:class="[is_dark_mode ? 'dark-input' : 'white-input']" placeholder="Enter your deposit address (optional)" />
+                    </div>
+                    <div class="support-input-margin">
+                        <div v-if="invalid_support_subject != ''" v-bind:class="[is_dark_mode ? 'dark-input error_border' : 'white-input error_border']" style="width: 100%; border-radius: 5px;">
+                            <select v-model="support_subject" class="custom-select sources place-holder" name="potencial" id="potencial" placeholder="PLEASE SELECT SUBJECT!">
+                                <option value="General queries">General queries</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Legal">Legal</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div v-else v-bind:class="[is_dark_mode ? 'dark-input' : 'white-input']" style="width: 100%; border-radius: 5px;">
+                            <select v-model="support_subject" class="custom-select sources place-holder" name="potencial" id="potencial" placeholder="Select subject">
+                                <option value="General queries">General queries</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Legal">Legal</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="support-input-margin">
+                        <textarea v-if="invalid_support_description != ''" v-model="support_name" class="support-textarea"
+                                  v-bind:class="[is_dark_mode ? 'dark-input error_border' : 'white-input error_border']"
+                                  :placeholder="invalid_support_description" ></textarea>
+                        <textarea v-else v-model="support_description" class="support-textarea" v-bind:class="[is_dark_mode ? 'dark-input' : 'white-input']" placeholder="Describe your subject"></textarea>
+                    </div>
+                    <div class="input-group-append entry-footer support-button-margin">
+                        <a class="btn waves-effect waves-light" v-on:click="submit_support()"><span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
